@@ -2,15 +2,15 @@ import { FC } from "react";
 
 const Nav: FC = () => {
   return (
-    <nav className="bg-gray-800 sticky top-0">
+    <nav className="bg-gray-800 sticky top-0 z-10">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div>
-            <h1 className="text-3xl text-transparent font-bold bg-gradient-to-r from-green-400 to bg-indigo-400 bg-clip-text">
+        <div className="flex flex-col sm:flex-row items-center justify-between py-3">
+          <div className="pb-2 sm:pb-0">
+            <h1 className="text-4xl text-transparent tracking-wider font-bold bg-gradient-to-r from-green-400 to bg-indigo-400 bg-clip-text">
               TMDB
             </h1>
           </div>
-          <div>
+          <div className="pb-2 sm:pb-0">
             <input
               type="text"
               id="search"

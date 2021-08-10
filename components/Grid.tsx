@@ -5,13 +5,14 @@ import Thumbnail from "./Thumbnail";
 const Grid: FC<Movies> = ({ page, results, total_pages, total_results }) => {
   return (
     <div>
-      <Thumbnail />
-      <h1>Movie Name</h1>
-      <div>
-        Data:
+      <h1 className="text-5xl text-center sm:text-left font-semibold my-4">
+        Popular Movies
+      </h1>
+
+      <div className="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-center">
         {results.map((movie) => (
           <div key={movie?.id}>
-            {movie.original_title}
+            <Thumbnail movie={movie} />
             {movie.title}
           </div>
         ))}
