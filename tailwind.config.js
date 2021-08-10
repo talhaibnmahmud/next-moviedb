@@ -4,8 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        firaCode: ["Fira Code", "monospace"],
-        raleway: ["Raleway", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
     },
   },

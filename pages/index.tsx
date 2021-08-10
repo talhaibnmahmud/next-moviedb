@@ -6,6 +6,7 @@ import Head from "next/head";
 import Grid from "../components/Grid";
 import Layout from "../components/Layout";
 import { Movies } from "../types/movie";
+import LoadMore from "../components/LoadMore";
 
 export default function Home() {
   const fetcher = (url: string): Promise<Movies> =>
@@ -14,7 +15,7 @@ export default function Home() {
   const endpoint = `${POPULAR_BAES_URL}`;
 
   const { data, error } = useSWR(endpoint, fetcher);
-  console.log({ data, error });
+  // console.log({ data, error });
 
   return (
     <Layout>
@@ -30,8 +31,10 @@ export default function Home() {
           results={data?.results}
           total_pages={data?.total_pages}
           total_results={data?.total_results}
-        ></Grid>
+        />
       )}
+
+      <LoadMore />
     </Layout>
   );
 }

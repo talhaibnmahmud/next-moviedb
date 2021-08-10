@@ -14,6 +14,7 @@ const Nav: FC = () => {
             <input
               type="text"
               id="search"
+              placeholder="Search for movies..."
               className="px-5 py-2 w-80 rounded-l-full focus:outline-none"
             />
             <label className="sr-only">Search Movie</label>
