@@ -12,7 +12,7 @@ class CustomDocument extends Document {
             rel="stylesheet"
           ></link>
         </Head>
-        <body className="font-poppins">
+        <body className="font-poppins bg-gradient-to-r from-purple-600 to-purple-700">
           <Main />
           <NextScript />
         </body>

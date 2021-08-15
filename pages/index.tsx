@@ -25,14 +25,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {data && (
-        <Grid
-          page={data?.page}
-          results={data?.results}
-          total_pages={data?.total_pages}
-          total_results={data?.total_results}
-        />
-      )}
+      {data && <Grid movies={data} />}
 
       <LoadMore />
     </Layout>
