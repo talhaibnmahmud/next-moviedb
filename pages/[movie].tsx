@@ -1,23 +1,38 @@
+import Head from "next/head";
 import { NextRouter, useRouter } from "next/router";
 import useSWR from "swr";
 
 import Layout from "../components/Layout";
 import Thumbnail from "../components/Thumbnail";
 import { API_KEY, API_URL } from "../configs/config";
-import { MovieDetails } from "../types/movie";
+import { Credits, MovieDetails } from "../types/movie";
 
-const fetcher = async (url: string): Promise<MovieDetails> =>
-  await (await fetch(url)).json();
+const fetcher = async (url: string) => await (await fetch(url)).json();
 
 const MovieDetail = () => {
   const router: NextRouter = useRouter();
   const movieID = router.query["movie"];
 
-  const endpoint = `${API_URL}movie/${movieID}?api_key=${API_KEY}`;
-  const { data: movie, error } = useSWR(endpoint, fetcher);
+  const movieEndpoint = `${API_URL}movie/${movieID}?api_key=${API_KEY}`;
+  const creditsEndpoint = `${API_URL}movie/${movieID}/credits?api_key=${API_KEY}`;
+
+  const { data: movie, error: movieError } = useSWR<MovieDetails>(
+    movieEndpoint,
+    fetcher
+  );
+  const { data: credits, error: creditsError } = useSWR<Credits>(
+    creditsEndpoint,
+    fetcher
+  );
+
+  console.log(credits);
 
   return (
     <Layout>
+      <Head>
+        <title>Next JS Movie DB | {movie?.title}</title>
+      </Head>
+
       {movie && (
         <div className="bg-purple-500 bg-opacity-50 flex p-4 items-center space-x-6 rounded-md shadow-sm text-gray-100">
           <Thumbnail src={movie?.poster_path} alt={movie?.original_title} />
@@ -70,6 +85,17 @@ const MovieDetail = () => {
             <div className="flex space-x-4">
               <div>Budget: {movie?.budget.toLocaleString("en-US")}</div>
               <div>Revenue: {movie?.revenue.toLocaleString("en-US")}</div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-medium">Director(s): </h3>
+              <div className="flex space-x-2">
+                {credits?.crew
+                  ?.filter((member) => member.job === "Director")
+                  .map((director) => (
+                    <div key={director?.credit_id}>{director?.name}</div>
+                  ))}
+              </div>
             </div>
           </div>
         </div>

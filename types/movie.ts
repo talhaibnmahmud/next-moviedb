@@ -29,27 +29,37 @@ export interface MovieDetails extends Movie {
     tagline: string;
 }
 
-export type Movies = {
+export interface Movies {
     page: number;
     results: Movie[];
     total_pages: number;
     total_results: number;
 };
 
-export type Cast = {
-    character: string;
+interface Persons {
+    adult: boolean;
     credit_id: string;
+    gender: number;
+    id: number;
+    known_for_department: string;
     name: string;
-    profile_path: string;
+    original_name: string;
+    popularity: number;
+    profile_path: string | null;
+}
+
+export interface Cast extends Persons {
+    cast_id: string;
+    character: string;
+    order: number;
 };
 
-export type Crew = {
+export interface Crew extends Persons {
+    department: string;
     job: string;
-    name: string;
-    credit_id: number;
 };
 
-export type Credits = {
+export interface Credits {
     id: number;
     cast: Cast[];
     crew: Crew[];
