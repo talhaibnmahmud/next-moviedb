@@ -3,7 +3,14 @@ import { FC } from "react";
 
 import { IMAGE_BASE_URL, POSTER_SIZE } from "../configs/config";
 
-const Thumbnail: FC<{ src: string | null; alt: string }> = ({ src, alt }) => {
+interface Props {
+  alt: string;
+  width: number;
+  height: number;
+  src: string | null;
+}
+
+const Thumbnail: FC<Props> = ({ src, alt, width, height }) => {
   const posterPathResolver = (poster_path: string | null) => {
     return poster_path
       ? IMAGE_BASE_URL + POSTER_SIZE + poster_path
@@ -12,8 +19,8 @@ const Thumbnail: FC<{ src: string | null; alt: string }> = ({ src, alt }) => {
 
   return (
     <Image
-      width={342}
-      height={342 * 1.67}
+      width={width}
+      height={height}
       objectFit="cover"
       alt={alt}
       src={posterPathResolver(src)}

@@ -22,7 +22,12 @@ const Card: FC<{ movie: Movie }> = ({ movie }) => {
       className="relative bg-purple-600 shadow-md rounded-md"
     >
       <div className="relative">
-        <Thumbnail src={movie?.poster_path} alt={movie?.original_title} />
+        <Thumbnail
+          src={movie?.poster_path}
+          alt={movie?.original_title}
+          width={500}
+          height={750}
+        />
         <div className="w-10 h-10 rounded-full bg-gray-800 font-sans  inline-flex justify-center items-center text-gray-200 absolute right-5 -bottom-4 z-10">
           {/* <canvas
                 ref={percentCanvas}
