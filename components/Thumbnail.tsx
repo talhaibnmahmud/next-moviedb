@@ -17,7 +17,7 @@ const Thumbnail: FC<{ src: string | null; alt: string }> = ({ src, alt }) => {
       objectFit="cover"
       alt={alt}
       src={posterPathResolver(src)}
-      className="rounded-t-md width-full"
+      className="rounded-md width-full"
     />
   );
 };
