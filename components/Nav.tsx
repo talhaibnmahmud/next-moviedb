@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FC } from "react";
 
 const Nav: FC = () => {
@@ -7,7 +8,9 @@ const Nav: FC = () => {
         <div className="flex flex-col sm:flex-row items-center justify-between py-3">
           <div className="pb-2 sm:pb-0">
             <h1 className="text-4xl text-transparent tracking-wider font-bold bg-gradient-to-r from-green-400 to-purple-400 bg-clip-text">
-              TMDB
+              <Link href="/">
+                <a>TMDB</a>
+              </Link>
             </h1>
           </div>
           <div className="pb-2 sm:pb-0">
