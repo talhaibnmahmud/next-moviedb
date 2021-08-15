@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import useSWR from "swr";
+import { useState } from "react";
 
 import Card from "../components/Card";
 import Grid from "../components/Grid";
@@ -13,7 +14,9 @@ import { Movies } from "../types/movie";
 const fetcher = async (url: string) => await (await fetch(url)).json();
 
 export default function Home() {
-  const endpoint = `${POPULAR_BAES_URL}`;
+  const [page, setPage] = useState(1);
+  const endpoint = `${POPULAR_BAES_URL}&page=${page}`;
+
   const { data: movies, error } = useSWR<Movies>(endpoint, fetcher);
   // console.log({ data, error });
 
@@ -37,7 +40,7 @@ export default function Home() {
         </Grid>
       )}
 
-      <LoadMore />
+      <LoadMore setPage={setPage} />
     </Layout>
   );
 }
