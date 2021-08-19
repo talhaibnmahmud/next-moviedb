@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FC } from "react";
 
-import { IMAGE_BASE_URL, POSTER_SIZE } from "../configs/config";
+import { IMAGE_BASE_URL, POSTER_SIZE } from "@configs/config";
 
 interface Props {
   alt: string;

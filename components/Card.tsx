@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import { Movie } from "../types/movie";
-import Thumbnail from "./Thumbnail";
+import Thumbnail from "@components/Thumbnail";
 
 const Card: FC<{ movie: Movie }> = ({ movie }) => {
   // const percentCanvas = useRef<HTMLCanvasElement>(null);

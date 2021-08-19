@@ -3,12 +3,12 @@ import Link from "next/link";
 import useSWR from "swr";
 import { FC, ReactElement, useState } from "react";
 
-import Card from "../components/Card";
-import Grid from "../components/Grid";
-import Layout from "../components/Layout";
-import LoadMore from "../components/LoadMore";
+import Card from "@components/Card";
+import Grid from "@components/Grid";
+import Layout from "@components/Layout";
+import LoadMore from "@components/LoadMore";
 
-import { POPULAR_BAES_URL } from "../configs/config";
+import { POPULAR_BAES_URL } from "@configs/config";
 import { Movies } from "../types/movie";
 
 const fetcher = async (url: string) => await (await fetch(url)).json();

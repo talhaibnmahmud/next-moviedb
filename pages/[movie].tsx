@@ -2,11 +2,11 @@ import { NextRouter, useRouter } from "next/router";
 import useSWR from "swr";
 import { FC } from "react";
 
-import Grid from "../components/Grid";
-import Layout from "../components/Layout";
-import MovieInfo from "../components/MovieInfo";
-import Thumbnail from "../components/Thumbnail";
-import { API_KEY, API_URL } from "../configs/config";
+import Grid from "@components/Grid";
+import Layout from "@components/Layout";
+import MovieInfo from "@components/MovieInfo";
+import Thumbnail from "@components/Thumbnail";
+import { API_KEY, API_URL } from "@configs/config";
 import { Credits } from "../types/movie";
 
 const fetcher = async (url: string) => await (await fetch(url)).json();

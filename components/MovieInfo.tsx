@@ -3,10 +3,10 @@ import { NextRouter, useRouter } from "next/router";
 import { FC } from "react";
 import useSWR from "swr";
 
-import { API_KEY, API_URL } from "../configs/config";
-import { convertCurrency } from "../helpers/helpers";
+import { API_KEY, API_URL } from "@configs/config";
+import { convertCurrency } from "@helpers/helpers";
 import { Crew, MovieDetails } from "../types/movie";
-import Thumbnail from "./Thumbnail";
+import Thumbnail from "@components/Thumbnail";
 
 const fetcher = async (url: string) => await (await fetch(url)).json();
 
