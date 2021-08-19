@@ -4,6 +4,7 @@ import { FC } from "react";
 import useSWR from "swr";
 
 import { API_KEY, API_URL } from "../configs/config";
+import { convertCurrency } from "../helpers/helpers";
 import { Crew, MovieDetails } from "../types/movie";
 import Thumbnail from "./Thumbnail";
 
@@ -25,7 +26,7 @@ const MovieInfo: FC<{ directors: Crew[] | null }> = ({ directors }) => {
         <title>Next JS Movie DB | {movie?.title}</title>
       </Head>
 
-      <div className="bg-purple-500 bg-opacity-50 flex p-4 items-center space-x-6 rounded-md shadow-sm text-gray-100">
+      <div className="bg-purple-500 bg-opacity-50 flex flex-col md:flex-row p-4 md:items-center md:space-x-6 rounded-md shadow-sm text-gray-100">
         {movie && (
           <Thumbnail
             src={movie?.poster_path}
@@ -43,8 +44,8 @@ const MovieInfo: FC<{ directors: Crew[] | null }> = ({ directors }) => {
             </span>
           </h1>
 
-          <div className="flex items-center space-x-4 text-gray-100">
-            <div className="flex items-center space-x-2">
+          <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 text-gray-100">
+            <div className="flex md:items-center space-x-2">
               {movie?.genres?.map((genre) => (
                 <div
                   key={genre?.id}
@@ -54,8 +55,11 @@ const MovieInfo: FC<{ directors: Crew[] | null }> = ({ directors }) => {
                 </div>
               ))}
             </div>
-            <span>&#8226;</span>
-            <div>{movie?.runtime}m</div>
+            <span className="hidden md:inline">&#8226;</span>
+            <div>
+              <span className="md:hidden">Runtime: </span>
+              {movie?.runtime}m
+            </div>
           </div>
 
           <div className="italic text-lg">{movie?.tagline}</div>
@@ -81,8 +85,10 @@ const MovieInfo: FC<{ directors: Crew[] | null }> = ({ directors }) => {
           </div>
 
           <div className="flex space-x-4">
-            <div>Budget: {movie?.budget.toLocaleString("en-US")}</div>
-            <div>Revenue: {movie?.revenue.toLocaleString("en-US")}</div>
+            <div>Budget: {movie?.budget && convertCurrency(movie?.budget)}</div>
+            <div>
+              Revenue: {movie?.revenue && convertCurrency(movie?.revenue)}
+            </div>
           </div>
 
           <div>

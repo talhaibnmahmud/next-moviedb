@@ -13,7 +13,7 @@ const Nav: FC = () => {
               </Link>
             </h1>
           </div>
-          <div className="pb-2 sm:pb-0">
+          {/* <div className="pb-2 sm:pb-0">
             <input
               type="text"
               id="search"
@@ -27,7 +27,7 @@ const Nav: FC = () => {
             >
               Search
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </nav>
