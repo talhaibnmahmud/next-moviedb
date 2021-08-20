@@ -12,6 +12,7 @@ const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
 
 const BACKDROP_SIZE = "w1280";
 const POSTER_SIZE = "w342";
+const PROFILE_SIZE = "h632";
 
 export {
     API_KEY,
@@ -24,4 +25,5 @@ export {
     IMAGE_BASE_URL,
     BACKDROP_SIZE,
     POSTER_SIZE,
+    PROFILE_SIZE,
 };

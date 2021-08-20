@@ -48,7 +48,16 @@ const Page: FC<{ page: number }> = ({ page }) => {
       {movies?.results.map((movie, movieIndex) => (
         <Link href={movie?.id.toString()} key={movieIndex}>
           <a>
-            <Card movie={movie} />
+            <Card
+              src={movie?.poster_path}
+              alt={movie?.original_title}
+              type="poster"
+              width={500}
+              height={750}
+              title={movie?.title}
+              date={movie?.release_date}
+              rating={movie?.vote_average}
+            />
           </a>
         </Link>
       ))}

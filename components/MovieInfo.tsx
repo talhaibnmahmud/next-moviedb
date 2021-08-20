@@ -33,6 +33,7 @@ const MovieInfo: FC<{ directors: Crew[] | null }> = ({ directors }) => {
           <Thumbnail
             src={movie?.poster_path}
             alt={movie?.original_title}
+            type="backdrop"
             width={342}
             height={342 * 1.5}
           />
