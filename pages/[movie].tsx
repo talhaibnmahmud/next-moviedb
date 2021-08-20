@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
-import useSWR from "swr";
 import { FC } from "react";
+import useSWR from "swr";
 
 import Card from "@components/Card";
 import Grid from "@components/Grid";
@@ -8,8 +9,7 @@ import Layout from "@components/Layout";
 import MovieInfo from "@components/MovieInfo";
 import { API_KEY, API_URL } from "@configs/config";
 import { Credits } from "../types/movie";
-
-const fetcher = async (url: string) => await (await fetch(url)).json();
+import { fetcher } from "@helpers/fetcher";
 
 const MovieDetail: FC = () => {
   const router: NextRouter = useRouter();
@@ -22,7 +22,7 @@ const MovieDetail: FC = () => {
     fetcher
   );
 
-  console.log(credits);
+  // console.log(credits);
 
   return (
     <Layout>
@@ -37,34 +37,46 @@ const MovieDetail: FC = () => {
       <Grid header="Casts" size="SM">
         {credits &&
           credits?.cast?.map((actors) => (
-            <Card
-              key={actors?.id}
-              src={actors?.profile_path}
-              alt={actors?.character}
-              type="profile"
-              width={500}
-              height={750}
-              title={actors?.character}
-              name={actors?.original_name}
-              rating={actors?.popularity}
-            />
+            <Link
+              key={actors?.cast_id + actors?.character}
+              href={"credits/" + actors?.id.toString()}
+            >
+              <a>
+                <Card
+                  src={actors?.profile_path}
+                  alt={actors?.character}
+                  type="profile"
+                  width={500}
+                  height={750}
+                  title={actors?.character}
+                  name={actors?.original_name}
+                  rating={actors?.popularity}
+                />
+              </a>
+            </Link>
           ))}
       </Grid>
 
       <Grid header="Crews" size="SM">
         {credits &&
           credits?.crew?.map((members) => (
-            <Card
-              key={members?.id}
-              src={members?.profile_path}
-              alt={members?.original_name}
-              type="profile"
-              width={500}
-              height={750}
-              title={members?.name}
-              name={members?.job}
-              rating={members?.popularity}
-            />
+            <Link
+              key={members?.credit_id}
+              href={"credits/" + members?.id.toString()}
+            >
+              <a>
+                <Card
+                  src={members?.profile_path}
+                  alt={members?.original_name}
+                  type="profile"
+                  width={500}
+                  height={750}
+                  title={members?.name}
+                  name={members?.job}
+                  rating={members?.popularity}
+                />
+              </a>
+            </Link>
           ))}
       </Grid>
     </Layout>

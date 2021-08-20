@@ -10,8 +10,7 @@ import LoadMore from "@components/LoadMore";
 
 import { POPULAR_BAES_URL } from "@configs/config";
 import { Movies } from "../types/movie";
-
-const fetcher = async (url: string) => await (await fetch(url)).json();
+import { fetcher } from "@helpers/fetcher";
 
 export default function Home() {
   const [page, setPage] = useState(1);

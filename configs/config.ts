@@ -4,6 +4,8 @@ const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 const SEARCH_BASE_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
 const POPULAR_BAES_URL = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US`;
 
+const CREDIT_URL = `${API_URL}person/`;
+
 const REQUEST_TOKEN_URL = `${API_URL}authentication/token/new?api_key=${API_KEY}`;
 const LOGIN_URL = `${API_URL}authentication/token/validate_with_login?api_key=${API_KEY}`;
 const SESSION_ID_URL = `${API_URL}authentication/session/new?api_key=${API_KEY}`;
@@ -19,6 +21,7 @@ export {
     API_URL,
     SEARCH_BASE_URL,
     POPULAR_BAES_URL,
+    CREDIT_URL,
     REQUEST_TOKEN_URL,
     LOGIN_URL,
     SESSION_ID_URL,
