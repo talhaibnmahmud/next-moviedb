@@ -41,7 +41,7 @@ export default function Home() {
 const Page: FC<{ page: number }> = ({ page }) => {
   const endpoint = `${POPULAR_BAES_URL}&page=${page}`;
   const { data: movies, error } = useSWR<Movies>(endpoint, fetcher);
-  // console.log({ data, error });
+  // console.log({ movies, error });
 
   return (
     <>

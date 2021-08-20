@@ -20,6 +20,8 @@ const MovieInfo: FC<{ directors: Crew[] | null }> = ({ directors }) => {
     fetcher
   );
 
+  console.log(movie);
+
   return (
     <>
       <Head>
