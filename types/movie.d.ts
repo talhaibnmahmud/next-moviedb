@@ -52,7 +52,7 @@ export interface Movies {
     total_results: number;
 }
 
-interface Persons {
+export interface Persons {
     adult: boolean;
     credit_id: string;
     gender: number | null;

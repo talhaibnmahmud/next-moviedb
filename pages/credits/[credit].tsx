@@ -1,9 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
 import { FC } from "react";
 import useSWR from "swr";
 
+import Card from "@components/Card";
 import Layout from "@components/Layout";
 import {
   API_KEY,
@@ -12,51 +14,33 @@ import {
   PROFILE_SIZE,
 } from "@configs/config";
 import { fetcher } from "@helpers/fetcher";
+import Grid from "@components/Grid";
+import { Images, MovieCredits, People, TVCredits } from "../../types/credits";
 
-interface People {
-  adult: boolean;
-  also_known_as: string[];
-  biography: string;
-  birthday: string | null;
-  deathday: string | null;
-  gender: number;
-  homepage: string | null;
-  id: number;
-  imdb_id: string;
-  known_for_department: string;
-  name: string;
-  place_of_birth: string | null;
-  popularity: number;
-  profile_path: string | null;
-}
-
-interface Images {
-  id: string;
-  profiles: {
-    aspect_ratio: number;
-    file_path: string;
-    height: number;
-    iso_639_1: null;
-    vote_avg: number | null;
-    vote_count: number;
-    width: number;
-  }[];
-}
-
-const Credid: FC = () => {
+const Credit: FC = () => {
   const router: NextRouter = useRouter();
   const creditID = router.query["credit"];
 
-  const creditsEndpoint = `${CREDIT_URL}${creditID}?api_key=${API_KEY}`;
+  const detailsEndpoint = `${CREDIT_URL}${creditID}?api_key=${API_KEY}`;
+  const moviesEndpoint = `${CREDIT_URL}${creditID}/movie_credits?api_key=${API_KEY}`;
+  const tvEndpoint = `${CREDIT_URL}${creditID}/tv_credits?api_key=${API_KEY}`;
   const imageEndpoint = `${CREDIT_URL}${creditID}/images?api_key=${API_KEY}`;
-  const { data, error } = useSWR<People>(creditsEndpoint, fetcher);
+
+  const { data, error } = useSWR<People>(detailsEndpoint, fetcher);
+  const { data: movies, error: moviesError } = useSWR<MovieCredits>(
+    moviesEndpoint,
+    fetcher
+  );
+  const { data: tv, error: tvError } = useSWR<TVCredits>(tvEndpoint, fetcher);
   const { data: images, error: imageError } = useSWR<Images>(
     imageEndpoint,
     fetcher
   );
 
-  console.log(data, error);
-  console.log(images, imageError);
+  // console.log(data, error);
+  // console.log(movies, moviesError);
+  // console.log(tv, tvError);
+  // console.log(images, imageError);
 
   return (
     <Layout>
@@ -107,9 +91,101 @@ const Credid: FC = () => {
 
         <div className="mt-4 text-gray-300 text-justify">{data?.biography}</div>
 
+        {/* In Movies */}
+        {movies?.cast && (
+          <Grid header="In Movies" size="SM">
+            {movies?.cast?.map((role, index) => (
+              <Link
+                key={index}
+                href={{ pathname: "/movie/" + role?.id.toString() }}
+              >
+                <a>
+                  <Card
+                    src={role?.poster_path}
+                    alt={role?.character}
+                    type="profile"
+                    title={role?.character}
+                    name={role?.title}
+                    rating={role?.popularity}
+                  />
+                </a>
+              </Link>
+            ))}
+          </Grid>
+        )}
+
+        {/* Movie Production */}
+        {movies?.crew && (
+          <Grid header="In Production" size="SM">
+            {movies?.crew?.map((role, index) => (
+              <Link
+                key={index}
+                href={{ pathname: "/movie/" + role?.id.toString() }}
+              >
+                <a>
+                  <Card
+                    src={role?.poster_path}
+                    alt={role?.job}
+                    type="profile"
+                    title={role?.title}
+                    name={role?.job}
+                    rating={role?.popularity}
+                  />
+                </a>
+              </Link>
+            ))}
+          </Grid>
+        )}
+        {/* In TVs */}
+        {tv?.cast && (
+          <Grid header="In TV" size="SM">
+            {tv?.cast?.map((role, index) => (
+              <Link
+                key={index}
+                href={{ pathname: "/movie/" + role?.id.toString() }}
+              >
+                <a>
+                  <Card
+                    src={role?.poster_path}
+                    alt={role?.character}
+                    type="profile"
+                    title={role?.name}
+                    name={role?.character}
+                    rating={role?.popularity}
+                  />
+                </a>
+              </Link>
+            ))}
+          </Grid>
+        )}
+
+        {/* TV Production */}
+        {tv?.crew && (
+          <Grid header="TV Production" size="SM">
+            {tv?.crew?.map((role, index) => (
+              <Link
+                key={index}
+                href={{ pathname: "/movie/" + role?.id.toString() }}
+              >
+                <a>
+                  <Card
+                    src={role?.poster_path}
+                    alt={role?.job}
+                    type="profile"
+                    title={role?.name}
+                    name={role?.job}
+                    rating={role?.popularity}
+                  />
+                </a>
+              </Link>
+            ))}
+          </Grid>
+        )}
+
+        {/* Photos */}
         <div className="text-gray-50 text-xl font-semibold mt-8">Photos: </div>
-        <div className="grid lg:grid-cols-6 gap-4 my-4">
-          {images?.profiles.map((image, index: number) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 my-4">
+          {images?.profiles?.map((image, index: number) => (
             <Image
               key={index}
               width={image.width}
@@ -125,4 +201,4 @@ const Credid: FC = () => {
   );
 };
 
-export default Credid;
+export default Credit;

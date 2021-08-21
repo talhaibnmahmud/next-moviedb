@@ -53,8 +53,6 @@ const MovieDetail: FC = () => {
                   src={actors?.profile_path}
                   alt={actors?.character}
                   type="profile"
-                  width={300}
-                  height={450}
                   title={actors?.character}
                   name={actors?.original_name}
                   rating={actors?.popularity}
@@ -76,8 +74,6 @@ const MovieDetail: FC = () => {
                   src={members?.profile_path}
                   alt={members?.original_name}
                   type="profile"
-                  width={300}
-                  height={450}
                   title={members?.name}
                   name={members?.job}
                   rating={members?.popularity}
@@ -92,7 +88,7 @@ const MovieDetail: FC = () => {
       </div>
       <div className="grid lg:grid-cols-6 gap-4 my-4">
         {similar &&
-          similar?.results.map((movie, index: number) => (
+          similar?.results?.map((movie, index: number) => (
             <Link href={movie?.id.toString()} key={index}>
               <a>
                 <Image

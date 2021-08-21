@@ -87,8 +87,14 @@ const MovieInfo: FC<{ directors: Crew[] | null }> = ({ directors }) => {
               </div>
 
               <div className="flex space-x-4">
-                <div>Budget: {convertCurrency(movie?.budget)}</div>
-                <div>Revenue: {convertCurrency(movie?.revenue)}</div>
+                <div>
+                  Budget:{" "}
+                  {movie?.budget ? convertCurrency(movie?.budget) : "Unknown"}
+                </div>
+                <div>
+                  Revenue:{" "}
+                  {movie?.revenue ? convertCurrency(movie?.revenue) : "Unknown"}
+                </div>
               </div>
 
               <div>
@@ -103,6 +109,21 @@ const MovieInfo: FC<{ directors: Crew[] | null }> = ({ directors }) => {
           </>
         )}
       </div>
+
+      {movie?.belongs_to_collection && (
+        <div className="my-4 flex flex-col justify-center">
+          <h3 className="text-2xl text-gray-200 my-2">
+            From: {movie?.belongs_to_collection?.name}
+          </h3>
+          <Thumbnail
+            src={movie?.belongs_to_collection?.backdrop_path}
+            alt={movie?.belongs_to_collection?.name}
+            width={300}
+            height={450}
+            type="backdrop"
+          />
+        </div>
+      )}
     </>
   );
 };

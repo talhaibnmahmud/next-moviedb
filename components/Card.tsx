@@ -5,10 +5,9 @@ import Thumbnail from "@components/Thumbnail";
 interface Props {
   src: string | null;
   alt: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   title: string;
-  job?: string;
   name?: string;
   date?: string;
   rating?: number;
@@ -23,8 +22,8 @@ const Card: FC<Props> = ({ ...prop }) => {
           src={prop.src}
           alt={prop.alt}
           type={prop.type}
-          width={prop.width}
-          height={prop.height}
+          width={prop?.width || 300}
+          height={prop?.height || 450}
         />
         <div className="w-10 h-10 rounded-full bg-gray-800 font-sans  inline-flex justify-center items-center text-gray-200 absolute right-5 -bottom-4 z-10">
           {prop?.rating?.toFixed(0)}
