@@ -16,7 +16,7 @@ const Page: FC<{ url: string; page: number }> = ({ url, page }) => {
       {movies &&
         movies?.results.map((movie, movieIndex) => (
           <Link href={"movie/" + movie?.id.toString()} key={movieIndex}>
-            <a className="block">
+            <a>
               <Card
                 src={movie?.poster_path}
                 alt={movie?.original_title}

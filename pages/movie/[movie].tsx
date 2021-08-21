@@ -46,7 +46,7 @@ const MovieDetail: FC = () => {
           credits?.cast?.map((actors) => (
             <Link
               key={actors?.cast_id + actors?.character}
-              href={"credits/" + actors?.id.toString()}
+              href={{ pathname: "/credits/" + actors?.id.toString() }}
             >
               <a>
                 <Card
@@ -69,7 +69,7 @@ const MovieDetail: FC = () => {
           credits?.crew?.map((members) => (
             <Link
               key={members?.credit_id}
-              href={"credits/" + members?.id.toString()}
+              href={{ pathname: "/credits/" + members?.id.toString() }}
             >
               <a>
                 <Card

@@ -17,7 +17,7 @@ interface Props {
 
 const Card: FC<Props> = ({ ...prop }) => {
   return (
-    <div className="relative bg-purple-600 shadow-md rounded-md">
+    <div className="relative bg-purple-600 shadow-md rounded-md h-full">
       <div className="relative">
         <Thumbnail
           src={prop.src}

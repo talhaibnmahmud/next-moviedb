@@ -13,9 +13,9 @@ const Nav: FC = () => {
               </Link>
             </h1>
           </div>
-          <div className="flex space-x-2 text-gray-200 font-semibold tracking-wide">
+          <div className="flex space-x-2 text-gray-200 font-semibold sm:tracking-wide">
             <Link href="/upcoming">
-              <a className="hover:underline hover:text-gray-50">Latest</a>
+              <a className="hover:underline hover:text-gray-50">Upcoming</a>
             </Link>
             <Link href="/now_playing">
               <a className="hover:underline hover:text-gray-50">Now Playing</a>
