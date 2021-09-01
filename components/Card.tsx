@@ -30,8 +30,8 @@ const Card: FC<Props> = ({ ...prop }) => {
         </div>
       </div>
       <div className="flex justify-between items-start px-4 pb-4 mt-4">
-        <div>
-          <div className="font-semibold leading-5 text-gray-100">
+        <div className="flex flex-col space-y-1">
+          <div className="font-semibold leading-4 text-gray-100">
             {prop.title}
           </div>
           {prop.date && (
@@ -40,7 +40,7 @@ const Card: FC<Props> = ({ ...prop }) => {
             </div>
           )}
           {prop.name && (
-            <div className="text-sm text-gray-300">{prop?.name}</div>
+            <div className="text-xs text-gray-300">{prop?.name}</div>
           )}
         </div>
       </div>

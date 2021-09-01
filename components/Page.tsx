@@ -4,7 +4,7 @@ import useSWR from "swr";
 
 import Card from "@components/Card";
 import { fetcher } from "@helpers/fetcher";
-import { Movies } from "../types/movie";
+import { Movies } from "@interfaces/movie";
 
 const Page: FC<{ url: string; page: number }> = ({ url, page }) => {
   const endpoint = `${url}&page=${page}`;

@@ -9,7 +9,7 @@ import Grid from "@components/Grid";
 import Layout from "@components/Layout";
 import MovieInfo from "@components/MovieInfo";
 import { API_KEY, API_URL, IMAGE_BASE_URL, POSTER_SIZE } from "@configs/config";
-import { Credits, Movies } from "../../types/movie";
+import { Credits, Movies } from "../../interfaces/movie";
 import { fetcher } from "@helpers/fetcher";
 
 const MovieDetail: FC = () => {
@@ -53,8 +53,8 @@ const MovieDetail: FC = () => {
                   src={actors?.profile_path}
                   alt={actors?.character}
                   type="profile"
-                  title={actors?.character}
-                  name={actors?.original_name}
+                  title={actors?.original_name}
+                  name={actors?.character}
                   rating={actors?.popularity}
                 />
               </a>

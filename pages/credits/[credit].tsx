@@ -15,7 +15,12 @@ import {
 } from "@configs/config";
 import { fetcher } from "@helpers/fetcher";
 import Grid from "@components/Grid";
-import { Images, MovieCredits, People, TVCredits } from "../../types/credits";
+import {
+  Images,
+  MovieCredits,
+  People,
+  TVCredits,
+} from "../../interfaces/credits";
 
 const Credit: FC = () => {
   const router: NextRouter = useRouter();

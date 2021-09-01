@@ -5,7 +5,7 @@ import useSWR from "swr";
 
 import { API_KEY, API_URL } from "@configs/config";
 import { convertCurrency } from "@helpers/helpers";
-import { Crew, MovieDetails } from "../types/movie";
+import { Crew, MovieDetails } from "@interfaces/movie";
 import Thumbnail from "@components/Thumbnail";
 import { fetcher } from "@helpers/fetcher";
 

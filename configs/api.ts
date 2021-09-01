@@ -1,4 +1,4 @@
-import { Movie, Movies } from "../types/movie";
+import { Movie, Movies } from "@interfaces/movie";
 import {
     API_KEY,
     API_URL,

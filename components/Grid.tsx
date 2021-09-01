@@ -7,8 +7,8 @@ const Grid: FC<{ header: string; size?: string }> = ({
 }) => {
   const classes: string =
     size === "LG"
-      ? "sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 "
-      : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 ";
+      ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 "
+      : "grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 ";
 
   return (
     <div>
