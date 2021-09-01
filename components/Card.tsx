@@ -29,7 +29,7 @@ const Card: FC<Props> = ({ ...prop }) => {
           {prop?.rating?.toFixed(0)}
         </div>
       </div>
-      <div className="flex justify-between items-start px-4 pb-4 mt-4">
+      <div className="flex justify-between items-start px-2 sm:px-4 pb-4 mt-4">
         <div className="flex flex-col space-y-1">
           <div className="font-semibold leading-4 text-gray-100">
             {prop.title}
