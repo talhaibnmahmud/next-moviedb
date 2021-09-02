@@ -55,7 +55,6 @@ const MovieDetail: FC = () => {
                   type="profile"
                   title={actors?.original_name}
                   name={actors?.character}
-                  rating={actors?.popularity}
                 />
               </a>
             </Link>
@@ -76,7 +75,6 @@ const MovieDetail: FC = () => {
                   type="profile"
                   title={members?.name}
                   name={members?.job}
-                  rating={members?.popularity}
                 />
               </a>
             </Link>

@@ -111,7 +111,7 @@ const Credit: FC = () => {
                     type="profile"
                     title={role?.character}
                     name={role?.title}
-                    rating={role?.popularity}
+                    rating={role?.vote_average}
                   />
                 </a>
               </Link>
@@ -134,7 +134,7 @@ const Credit: FC = () => {
                     type="profile"
                     title={role?.title}
                     name={role?.job}
-                    rating={role?.popularity}
+                    rating={role?.vote_average}
                   />
                 </a>
               </Link>
@@ -156,7 +156,7 @@ const Credit: FC = () => {
                     type="profile"
                     title={role?.name}
                     name={role?.character}
-                    rating={role?.popularity}
+                    rating={role?.vote_average}
                   />
                 </a>
               </Link>
@@ -179,7 +179,7 @@ const Credit: FC = () => {
                     type="profile"
                     title={role?.name}
                     name={role?.job}
-                    rating={role?.popularity}
+                    rating={role?.vote_average}
                   />
                 </a>
               </Link>
