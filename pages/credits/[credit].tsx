@@ -15,12 +15,7 @@ import {
 } from "@configs/config";
 import { fetcher } from "@helpers/fetcher";
 import Grid from "@components/Grid";
-import {
-  Images,
-  MovieCredits,
-  People,
-  TVCredits,
-} from "../../interfaces/credits";
+import { Images, MovieCredits, People, TVCredits } from "@interfaces/credits";
 
 const Credit: FC = () => {
   const router: NextRouter = useRouter();
@@ -31,14 +26,20 @@ const Credit: FC = () => {
   const tvEndpoint = `${CREDIT_URL}${creditID}/tv_credits?api_key=${API_KEY}`;
   const imageEndpoint = `${CREDIT_URL}${creditID}/images?api_key=${API_KEY}`;
 
-  const { data, error } = useSWR<People>(detailsEndpoint, fetcher);
-  const { data: movies, error: moviesError } = useSWR<MovieCredits>(
-    moviesEndpoint,
+  const { data, error } = useSWR<People>(
+    router.isReady ? detailsEndpoint : null,
     fetcher
   );
-  const { data: tv, error: tvError } = useSWR<TVCredits>(tvEndpoint, fetcher);
+  const { data: movies, error: moviesError } = useSWR<MovieCredits>(
+    router.isReady ? moviesEndpoint : null,
+    fetcher
+  );
+  const { data: tv, error: tvError } = useSWR<TVCredits>(
+    router.isReady ? tvEndpoint : null,
+    fetcher
+  );
   const { data: images, error: imageError } = useSWR<Images>(
-    imageEndpoint,
+    router.isReady ? imageEndpoint : null,
     fetcher
   );
 

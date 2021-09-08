@@ -9,26 +9,26 @@ import Grid from "@components/Grid";
 import Layout from "@components/Layout";
 import MovieInfo from "@components/MovieInfo";
 import { API_KEY, API_URL, IMAGE_BASE_URL, POSTER_SIZE } from "@configs/config";
-import { Credits, Movies } from "../../interfaces/movie";
+import { Credits, Movies } from "@interfaces/movie";
 import { fetcher } from "@helpers/fetcher";
 
 const MovieDetail: FC = () => {
   const router: NextRouter = useRouter();
-  const movieID = router.query["movie"];
+  const { movie: movieID } = router.query;
 
   const creditsEndpoint = `${API_URL}movie/${movieID}/credits?api_key=${API_KEY}`;
   const similarEndpoint = `${API_URL}movie/${movieID}/similar?api_key=${API_KEY}&language=en-US`;
 
   const { data: credits, error: creditsError } = useSWR<Credits>(
-    creditsEndpoint,
+    router.isReady ? creditsEndpoint : null,
     fetcher
   );
   const { data: similar, error: similarError } = useSWR<Movies>(
-    similarEndpoint,
+    router.isReady ? similarEndpoint : null,
     fetcher
   );
-  // console.log(similar, similarError);
 
+  // console.log(similar, similarError);
   // console.log(credits);
 
   return (

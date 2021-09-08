@@ -11,11 +11,11 @@ import { fetcher } from "@helpers/fetcher";
 
 const MovieInfo: FC<{ directors: Crew[] | null }> = ({ directors }) => {
   const router: NextRouter = useRouter();
-  const movieID = router.query["movie"];
+  const { movie: movieID } = router.query;
 
   const movieEndpoint = `${API_URL}movie/${movieID}?api_key=${API_KEY}`;
   const { data: movie, error: movieError } = useSWR<MovieDetails>(
-    movieEndpoint,
+    router.isReady ? movieEndpoint : null,
     fetcher
   );
 
