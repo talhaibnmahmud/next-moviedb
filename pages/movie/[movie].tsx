@@ -84,7 +84,7 @@ const MovieDetail: FC = () => {
       <div className="text-gray-50 text-xl font-semibold mt-8">
         Similar Movies:{" "}
       </div>
-      <div className="grid lg:grid-cols-6 gap-4 my-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-10 gap-4 my-4">
         {similar &&
           similar?.results?.map((movie, index: number) => (
             <Link href={movie?.id.toString()} key={index}>
